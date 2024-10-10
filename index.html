@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .content-upload {
+          display: flex;
+          width: 80%;
+          flex-direction: column;
+          margin: 0 auto;
+        }
+        
+        .upload-page {
+          background-color: #fff;
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+          overflow: hidden;
+        }
+        
+        .header-image {
+          aspect-ratio: 8.47;
+          width: 100%;
+        }
+        
+        .status-bar {
+          background-color: #f3f5f7;
+          display: flex;
+          flex-direction: column;
+        }
+        
+        .status-bar-content {
+          background-color: #fff;
+          display: flex;
+          justify-content: center;
+          padding: 10px 9px;
+        }
+        
+        .status-bar-image {
+          aspect-ratio: 14.71;
+          object-fit: contain;
+          object-position: center;
+          width: 100%;
+        }
+        
+        .main-content {
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+          padding: 0 10px;
+        }
+        
+        .page-title {
+          color: #000;
+          font: 700 32px 'Noto Sans KR', sans-serif;
+        }
+        
+        .page-subtitle {
+          color: #000;
+          font: 700 12px 'Noto Sans KR', sans-serif;
+        }
+        
+        .file-upload-area {
+          border-radius: 7px;
+          width: 80%;
+          align-items: center;
+          justify-content: center;
+          gap: 16px;
+          font-family: 'Noto Sans KR', sans-serif;
+          font-weight: 700;
+          padding: 11px 16px;
+          border: 1px dashed rgba(0, 0, 0, 0.5);
+          margin: 0 auto;
+          margin-top: 25px;
+          display:flex;
+        }
+        
+        .upload-icon {
+          aspect-ratio: 1;
+          object-fit: contain;
+          object-position: center;
+          min-width: 32px;
+          align-self: stretch;
+          margin: auto 0;
+        }
+        
+        .upload-content {
+          display: flex;
+          min-width: 240px;
+          align-items: center;
+          gap: 37px;
+          justify-content: center;
+          margin: auto 0;
+        }
+        
+        .upload-description {
+          align-self: stretch;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 100%;
+          margin: auto 0;
+        }
+        
+        .upload-instruction {
+          color: #000;
+          font-size: 8px;
+          font-weight:bold;
+        }
+        
+        .file-types {
+          color: #0f91d2;
+          font-size: 6px;
+          margin-top: 8px;
+          font-weight:1000;
+        }
+        
+        .file-select-button {
+          display:inline-block;
+          border-radius: 3px;
+          background-color: #fbfdfe;
+          gap: 7px;
+          font-size: 6px;
+          color: #0f91d2;
+          margin: auto 0;
+          padding: 8px 10px;
+          border: 1px solid rgba(15, 145, 210, 0.7);
+        }
+        
+        .uploaded-file {
+          display: flex;
+          margin-top: 15px;
+          padding: 25px;
+          align-items: start;
+          gap: 7px;
+        }
+        
+        .file-icon {
+          aspect-ratio: 1;
+          object-fit: contain;
+          object-position: center;
+          width: 15px;
+        }
+        
+        .file-details {
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          flex-basis: 0;
+          width: fit-content;
+        }
+        
+        .file-info {
+          display: flex;
+          gap: 20px;
+          font-family: 'Noto Sans KR', sans-serif;
+          font-weight: 400;
+          white-space: nowrap;
+          justify-content: space-between;
+        }
+        
+        .file-name {
+          color: rgba(0, 0, 0, 0.4);
+          font-size: 10px;
+        }
+        
+        .file-size {
+          color: #91949d;
+          font-size: 8px;
+          white-space: nowrap;
+          margin-right: 10px;
+        }
+        
+        .upload-progress {
+          display: flex;
+        }
+        
+        .progress-bar {
+          width: 90%;
+          height: 2px;
+          border: 2px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-container {
+          display: flex;
+          flex-direction: column;
+          font-family: 'Noto Sans KR', sans-serif;
+          justify-content: center;
+          margin: 34px 17px 0;
+        }
+        
+        .form-group {
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+          justify-content: end;
+          margin-bottom: 20px;
+        }
+        
+        .form-label {
+          color: #000;
+          font-size: 12px;
+          font-weight: bold;
+        }
+        
+        .form-input {
+          align-self: stretch;
+          border-radius: 20px;
+          border: 1px solid #959595;
+          margin-top: 6px;
+          gap: 10px;
+          overflow: hidden;
+          font-size: 10px;
+          color: #959595;
+          font-weight: 400;
+          padding: 15px 24px;
+        }
+        
+        .button-group {
+          align-self: center;
+          display: flex;
+          margin-top: 10vh;
+          min-width: 242px;
+          max-width: 100%;
+          gap: 12px;
+          color: #f9f9f9;
+          white-space: nowrap;
+          font: 700 12px 'Noto Sans KR', sans-serif;
+        }
+        
+        .cancel-button, .confirm-button {
+          align-self: stretch;
+          text-align:center;
+          border-radius: 30px;
+          min-height: 31px;
+          gap: 10px;
+          overflow: hidden;
+          padding: 7px 46px;
+          border: none;
+        }
+        
+        .cancel-button {
+          background-color: #c3c7c8;
+        }
+        
+        .confirm-button {
+          background-color: #1a8eea;
+        }
+        
+        .mobile-nav {
+          border-top: 0.906px solid #efeff0;
+          background-color: #fff;
+          display: flex;
+          margin-top: 51px;
+          align-items: start;
+          gap: 20px;
+          overflow: hidden;
+          color: #61646b;
+          text-align: center;
+          justify-content: space-between;
+          padding: 23px 29px;
+          font: 400 12px 'Noto Sans KR', sans-serif;
+        }
+        
+        .nav-item {
+          display: flex;
+          flex-direction: column;
+          color: #19191b;
+          white-space: nowrap;
+        }
+        
+        .nav-icon {
+          aspect-ratio: 1;
+          object-fit: contain;
+          object-position: center;
+          width: 25px;
+          align-self: center;
+        }
+        
+        .nav-text {
+          margin-top: 5px;
+          font-weight:bold;
+        }
+        
+        .visually-hidden {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
+        #input-file {
+            display:none;
+        }
+        .file-selection {
+            white-space: nowrap;
+        }
+        .button-text {
+            font-weight:bold;
+            text-align:center;
+            color: white;
+        }
+        </style>
+</head>
+<body>
+    <section class="content-upload">
+        <div class="upload-page">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/006e0810a994e70b12f810d35def635061fe435d6677bba5c83b9386ba0e4cb5?placeholderIfAbsent=true&apiKey=78a2c2508413491ca90d67ae1705ed00" alt="" class="header-image" />
+          <header class="status-bar">
+            <div class="status-bar-content">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/13881478d48acf65d4fb4c1f1bf51ceb2fcc34a2d846b7884cba0b2d163a0c15?placeholderIfAbsent=true&apiKey=78a2c2508413491ca90d67ae1705ed00" alt="Status bar" class="status-bar-image" />
+            </div>
+          </header>
+          <main class="main-content">
+            <h1 class="page-title">콘텐츠 업로드</h1>
+            <p class="page-subtitle">판매할 콘텐츠를 업로드 해주세요.</p>
+            <div class="file-upload-area">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/960ef4830260f71468b01e91386168eee320664fb5055a1914cd0153944cb2a7?placeholderIfAbsent=true&apiKey=78a2c2508413491ca90d67ae1705ed00" alt="Upload icon" class="upload-icon" />
+              <div class="upload-content">
+                <div class="upload-description">
+                  <p class="upload-instruction">파일을 선택하거나 여기로 드래그 해주세요.</p>
+                  <p class="file-types">HEVC, MOV, HEIC. MP4, JPG, PNG, file size no more than 10MB</p>
+                </div>
+                <label class="file-select-button">
+                    <input type="file" id="input-file">
+                    <span class="file-selection">
+                        파일 선택
+                    </span>
+                </label>
+              </div>
+            </div>
+            <div class="uploaded-file">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9b6e08ce26fcbb661c1dae8ad7da5a4512fe2e0110356f36d1df8854e72604d4?placeholderIfAbsent=true&apiKey=78a2c2508413491ca90d67ae1705ed00" alt="File icon" class="file-icon" />
+              <div class="file-details">
+                <div class="file-info">
+                  <span class="file-name">img1.jpg</span>
+                  <span class="file-size">5.7MB</span>
+                </div>
+                <div class="upload-progress">
+                  <div class="progress-bar"></div>
+                </div>
+              </div>
+            </div>
+            <form class="form-container">
+              <div class="form-group">
+                <label for="content-name" class="form-label">콘텐츠 이름</label>
+                <input type="text" id="content-name" class="form-input" placeholder="콘텐츠 이름" />
+              </div>
+              <div class="form-group">
+                <label for="content-description" class="form-label">콘텐츠 설명</label>
+                <input   id="content-description" class="form-input" placeholder="콘텐츠 설명"></input>
+              </div>
+              <div class="form-group">
+                <label for="starting-price" class="form-label">시작가</label>
+                <input type="text" id="starting-price" class="form-input" placeholder="콘텐츠 이름" />
+              </div>
+              <div class="button-group">
+                <button type="button" class="cancel-button"><div class="button-text">취소</div></button>
+                <button type="submit" class="confirm-button"><div class="button-text">확인</div></button>
+              </div>
+            </form>
+          </main>
+          <nav class="mobile-nav">
+            <div class="nav-item">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/173e397ed1beb789d06a11541dded0633ba48d743b7cfbfd12083a32088365ca?placeholderIfAbsent=true&apiKey=78a2c2508413491ca90d67ae1705ed00" alt="" class="nav-icon" />
+              <span class="nav-text">Home</span>
+            </div>
+            <div class="nav-item">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ff2afd4fd7e82a31075d30b959d829cbcfb8363a5ce3e525e0b0575d0ead3ba0?placeholderIfAbsent=true&apiKey=78a2c2508413491ca90d67ae1705ed00" alt="" class="nav-icon" />
+              <span class="nav-text">Sponsor</span>
+            </div>
+            <div class="nav-item">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/3c8c26b180f10bcc8735477510fca4c83698438f7400bb771d2f41cc13ce00cb?placeholderIfAbsent=true&apiKey=78a2c2508413491ca90d67ae1705ed00" alt="" class="nav-icon" />
+              <span class="nav-text">Sell Contents</span>
+            </div>
+            <div class="nav-item">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2f42cab8a658a920365514fd413b8696cf00355e6bd563ebf54c177a43fdc591?placeholderIfAbsent=true&apiKey=78a2c2508413491ca90d67ae1705ed00" alt="" class="nav-icon" />
+              <span class="nav-text">Profile</span>
+            </div>
+          </nav>
+        </div>
+      </section>
+</body>
+</html>
+
+    
+    
